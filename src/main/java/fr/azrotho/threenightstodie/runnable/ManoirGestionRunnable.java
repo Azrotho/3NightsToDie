@@ -26,7 +26,7 @@ public class ManoirGestionRunnable extends BukkitRunnable {
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("")); // TODO: Send timer ?
 
                 if(plugin.nightPlayerManager().player(player).tickInManoir() >= 20 * 60 * 10) {
-                    plugin.nightPlayerManager().resetTickInManoir(player); // test commit
+                    plugin.nightPlayerManager().resetTickInManoir(player);
                 }
             }
         }
