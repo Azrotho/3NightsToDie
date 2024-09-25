@@ -13,3 +13,9 @@ commands:
     usage: /vote <player>
     aliases:
     - v
+  broadcast:
+    description: Broadcast command
+    usage: /broadcast <message>
+    aliases:
+    - b
+    - bc

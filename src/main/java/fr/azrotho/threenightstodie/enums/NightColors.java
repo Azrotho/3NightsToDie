@@ -4,7 +4,8 @@ public enum NightColors {
 
     GREEN("§a"),
     YELLOW("§e"),
-    RED("§c");
+    RED("§c"),
+    ADMINS("§4");
 
 
     private final String color;

@@ -8,6 +8,7 @@ import dev.sergiferry.playernpc.api.NPCLib;
 import fr.azrotho.threenightstodie.commands.DebugCommand;
 import fr.azrotho.threenightstodie.commands.VoteCommand;
 import fr.azrotho.threenightstodie.listener.NPCInteractListener;
+import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.utils.NPCUtility;
 import fr.azrotho.threenightstodie.utils.TeamUtility;
@@ -18,12 +19,14 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     private ThreeNightsToDiePlugin instance;
     private NPCUtility npcUtility;
     private TeamUtility teamUtility;
+    private NightGame nightGame;
 
     @Override
     public void onEnable() {
         instance = this;
         NPCLib.getInstance().registerPlugin(this);
         npcUtility = new NPCUtility(this);
+        nightGame = new NightGame();
 
         npcUtility.init(new Location(Bukkit.getWorld("world"), 0, 90, 0));
         getLogger().info("ThreeNightsToDie plugin enabled");
@@ -32,6 +35,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
         getCommand("vote").setExecutor(new VoteCommand());
         getCommand("debug").setExecutor(new DebugCommand());
+        getCommand("broadcast").setExecutor(new DebugCommand());
 
         getServer().getPluginManager().registerEvents(new NPCInteractListener(), this);
     }
@@ -55,5 +59,9 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
     public TeamUtility teamUtility() {
         return this.teamUtility;
+    }
+
+    public NightGame nightGame() {
+        return this.nightGame;
     }
 }
