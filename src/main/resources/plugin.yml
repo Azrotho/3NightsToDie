@@ -2,3 +2,14 @@ name: 3NightsToDie
 main: fr.azrotho.threenightstodie.ThreeNightsToDiePlugin
 version: 1.0
 author: Azrotho
+commands:
+  debug:
+    description: Debug command
+    usage: /<command>
+    aliases:
+    - d
+  vote:
+    description: Vote command
+    usage: /vote <player>
+    aliases:
+    - v

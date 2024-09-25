@@ -23,8 +23,10 @@ public class ManoirGestionRunnable extends BukkitRunnable {
             ManoirUtility manoirUtility = new ManoirUtility();
             if(manoirUtility.isInManoir(player)) {
                 plugin.nightPlayerManager().addTickToPlayer(player);
-
+                
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBarMessage(player, plugin.nightPlayerManager().player(player).tickInManoir())));
+
+                manoirUtility.giveReward(player, plugin.nightPlayerManager().player(player).tickInManoir());
 
                 if(plugin.nightPlayerManager().player(player).tickInManoir() >= 20 * 60 * 10) {
                     plugin.nightPlayerManager().resetTickInManoir(player);
