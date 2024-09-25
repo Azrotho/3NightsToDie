@@ -16,6 +16,7 @@ public class ManoirGestionRunnable extends BukkitRunnable {
         this.plugin = plugin;
     }
 
+    @SuppressWarnings("null")
     @Override
     public void run() {
         for(Player player : Bukkit.getOnlinePlayers()) {

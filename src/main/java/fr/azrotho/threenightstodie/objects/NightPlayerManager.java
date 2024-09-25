@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import org.bukkit.entity.Player;
 
-
+@SuppressWarnings("null")
 public class NightPlayerManager {
     public List<NightPlayer> players = new ArrayList<>();
     
