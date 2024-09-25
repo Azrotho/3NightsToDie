@@ -46,4 +46,24 @@ public class NightPlayerManager {
         NightPlayer nightPlayer = player(player);
         nightPlayer.setTickInManoir(0);
     }
+
+    public void addVote(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setVote(nPlayer.vote() + 1);
+    }
+
+    public void resetVote(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setVote(0);
+    }
+
+    public void setMayor(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setMayor(true);
+    }
+
+    public void removeMayor(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setMayor(false);
+    }
 }

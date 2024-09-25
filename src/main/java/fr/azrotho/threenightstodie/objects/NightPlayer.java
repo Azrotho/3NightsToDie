@@ -6,6 +6,8 @@ public class NightPlayer {
     private UUID uuid;
     private long tickInManoir;
     private int death;
+    private int vote;
+    private boolean isMayor;
 
     public NightPlayer(UUID uuid) {
         this.uuid = uuid;
@@ -31,5 +33,21 @@ public class NightPlayer {
 
     public void setDeath(int death) {
         this.death = death;
+    }
+
+    public int vote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
+    }
+
+    public boolean isMayor() {
+        return isMayor;
+    }
+
+    public void setMayor(boolean mayor) {
+        isMayor = mayor;
     }
 }

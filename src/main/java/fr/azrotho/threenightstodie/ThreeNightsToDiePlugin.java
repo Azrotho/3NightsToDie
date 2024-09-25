@@ -23,4 +23,8 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     public NightPlayerManager nightPlayerManager() {
         return this.nightPlayerManager;
     }
+
+    public ThreeNightsToDiePlugin instance() {
+        return this.instance;
+    }
 }
