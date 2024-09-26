@@ -4,10 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import dev.sergiferry.playernpc.api.NPCLib;
 import fr.azrotho.threenightstodie.commands.DebugCommand;
 import fr.azrotho.threenightstodie.commands.VoteCommand;
-import fr.azrotho.threenightstodie.listener.NPCInteractListener;
 import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
@@ -25,7 +23,6 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        NPCLib.getInstance().registerPlugin(this);
         npcUtility = new NPCUtility(this);
         nightGame = new NightGame();
 
@@ -37,8 +34,6 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getCommand("vote").setExecutor(new VoteCommand());
         getCommand("debug").setExecutor(new DebugCommand());
         getCommand("broadcast").setExecutor(new DebugCommand());
-
-        getServer().getPluginManager().registerEvents(new NPCInteractListener(), this);
 
         ManoirGestionRunnable manoirGestionRunnable = new ManoirGestionRunnable(this);
         manoirGestionRunnable.runTaskTimer(this, 0, 0);

@@ -1,6 +1,7 @@
 name: 3NightsToDie
 main: fr.azrotho.threenightstodie.ThreeNightsToDiePlugin
 version: 1.0
+api-version: 1.21
 author: Azrotho
 commands:
   debug:
