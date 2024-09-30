@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import fr.azrotho.threenightstodie.commands.BroadcastCommnad;
 import fr.azrotho.threenightstodie.commands.DebugCommand;
 import fr.azrotho.threenightstodie.commands.VoteCommand;
+import fr.azrotho.threenightstodie.listener.OnJoinListener;
 import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
@@ -32,6 +33,8 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
         teamUtility = new TeamUtility(this);
         teamUtility.init();
+
+        getServer().getPluginManager().registerEvents(new OnJoinListener(this), this);
 
         getCommand("vote").setExecutor(new VoteCommand());
         getCommand("debug").setExecutor(new DebugCommand(this));
