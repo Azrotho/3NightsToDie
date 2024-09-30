@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.azrotho.threenightstodie.commands.BroadcastCommnad;
 import fr.azrotho.threenightstodie.commands.DebugCommand;
 import fr.azrotho.threenightstodie.commands.VoteCommand;
 import fr.azrotho.threenightstodie.objects.NightGame;
@@ -33,8 +34,8 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         teamUtility.init();
 
         getCommand("vote").setExecutor(new VoteCommand());
-        getCommand("debug").setExecutor(new DebugCommand());
-        getCommand("broadcast").setExecutor(new DebugCommand());
+        getCommand("debug").setExecutor(new DebugCommand(this));
+        getCommand("broadcast").setExecutor(new BroadcastCommnad());
 
         ManoirGestionRunnable manoirGestionRunnable = new ManoirGestionRunnable(this);
         manoirGestionRunnable.runTaskTimer(this, 0, 0);

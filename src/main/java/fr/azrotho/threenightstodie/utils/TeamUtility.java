@@ -1,6 +1,7 @@
 package fr.azrotho.threenightstodie.utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
 
@@ -93,5 +94,14 @@ public class TeamUtility {
 
     public Team adminTeam() {
         return this.adminTeam;
+    }
+
+    public void changeTeam(Player player, Team team) {
+        if(player.getScoreboard().getTeams().size() > 0) {
+            for(Team _team : player.getScoreboard().getTeams()) {
+                _team.removeEntry(player.getName());
+            }
+        }
+        team.addEntry(player.getName());
     }
 }

@@ -1,10 +1,21 @@
 package fr.azrotho.threenightstodie.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Team;
 
-public class DebugCommand implements CommandExecutor{
+import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
+
+public class DebugCommand implements CommandExecutor {
+
+    private ThreeNightsToDiePlugin plugin;
+
+    public DebugCommand(ThreeNightsToDiePlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String name, String[] args) {
@@ -21,7 +32,23 @@ public class DebugCommand implements CommandExecutor{
                 sender.sendMessage("§aCommande shop");
             }
             case "team" -> {
-                sender.sendMessage("§aCommande team");
+                switch (args[1]) {
+                    case "changeTeam" -> {
+                        Player player = Bukkit.getPlayer(args[2]);
+                        if(player == null) {
+                            sender.sendMessage("§cJoueur introuvable");
+                            return true;
+                        }
+
+                        Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(args[3]);
+                        if(team == null) {
+                            sender.sendMessage("§cEquipe introuvable");
+                            return true;
+                        }
+                        
+                        plugin.teamUtility().changeTeam(player, team);
+                    }
+                }
             }
             case "eliminate" -> {
                 sender.sendMessage("§aCommande eliminate");
@@ -42,7 +69,6 @@ public class DebugCommand implements CommandExecutor{
                 sender.sendMessage("§cCommande inconnue, faites /debug help pour voir les commandes disponibles");
             }
         }
-
         return true;
     }
     
