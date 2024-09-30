@@ -30,6 +30,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getLogger().info("ThreeNightsToDie plugin enabled");
 
         teamUtility = new TeamUtility(this);
+        teamUtility.init();
 
         getCommand("vote").setExecutor(new VoteCommand());
         getCommand("debug").setExecutor(new DebugCommand());
