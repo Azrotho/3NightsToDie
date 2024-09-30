@@ -8,11 +8,15 @@ public class NightPlayer {
     private int death;
     private int vote;
     private boolean isMayor;
+    private boolean isEliminated;
 
     public NightPlayer(UUID uuid) {
         this.uuid = uuid;
         this.tickInManoir = 0;
         this.death = 0;
+        this.vote = 0;
+        this.isMayor = false;
+        this.isEliminated = false;
     }
 
     public UUID getUuid() {
@@ -49,5 +53,13 @@ public class NightPlayer {
 
     public void setMayor(boolean mayor) {
         isMayor = mayor;
+    }
+
+    public boolean isEliminated() {
+        return isEliminated;
+    }
+
+    public void setEliminated(boolean eliminated) {
+        isEliminated = eliminated;
     }
 }

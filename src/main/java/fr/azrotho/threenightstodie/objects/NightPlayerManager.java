@@ -66,4 +66,26 @@ public class NightPlayerManager {
         NightPlayer nPlayer = player(player);
         nPlayer.setMayor(false);
     }
+
+    public void addPlayer(UUID uuid) {
+        if(player(uuid) != null) {
+            return;
+        }
+        players.add(new NightPlayer(uuid));
+    }
+
+    public void eliminate(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setEliminated(true);
+    }
+
+    public void unEliminate(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setEliminated(false);
+    }
+
+    public boolean isEliminated(Player player) {
+        NightPlayer nPlayer = player(player);
+        return nPlayer.isEliminated();
+    }
 }
