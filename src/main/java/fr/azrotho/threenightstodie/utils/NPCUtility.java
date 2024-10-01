@@ -13,7 +13,6 @@ public class NPCUtility {
 
 
     public void init(Location location) {
-
     }
     
 }
