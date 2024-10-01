@@ -65,6 +65,9 @@ public class DebugCommand implements CommandExecutor {
             case "mayor" -> {
                 sender.sendMessage("§aCommande mayor");
             }
+            case "targetPlayer" -> {
+                sender.sendMessage("Commande targetPlayer");
+            }
             default -> {
                 sender.sendMessage("§cCommande inconnue, faites /debug help pour voir les commandes disponibles");
             }
