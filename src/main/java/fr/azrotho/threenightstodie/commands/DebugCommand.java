@@ -1,6 +1,7 @@
 package fr.azrotho.threenightstodie.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,7 @@ public class DebugCommand implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onCommand(CommandSender sender, Command command, String name, String[] args) {
         if(!sender.isOp()) { 
@@ -51,7 +53,22 @@ public class DebugCommand implements CommandExecutor {
                 }
             }
             case "eliminate" -> {
-                sender.sendMessage("§aCommande eliminate");
+                if(args[1].equals("eliminate")) {
+                    Player player = Bukkit.getPlayer(args[2]);
+                    if(player == null) {
+                        sender.sendMessage("§cJoueur introuvable");
+                        return true;
+                    }
+                    plugin.nightPlayerManager().eliminate(player);
+                }
+                if(args[1].equals("revive")) {
+                    OfflinePlayer player = Bukkit.getOfflinePlayer(args[2]);
+                    if(player == null) {
+                        sender.sendMessage("§cJoueur introuvable");
+                        return true;
+                    }
+                    plugin.nightPlayerManager().unEliminate(player);
+                }
             }
             case "npc" -> {
                 sender.sendMessage("§aCommande npc");

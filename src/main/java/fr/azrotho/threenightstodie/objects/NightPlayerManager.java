@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("null")
@@ -77,10 +78,11 @@ public class NightPlayerManager {
     public void eliminate(Player player) {
         NightPlayer nPlayer = player(player);
         nPlayer.setEliminated(true);
+        player.kickPlayer("§cVous avez été éliminé");
     }
 
-    public void unEliminate(Player player) {
-        NightPlayer nPlayer = player(player);
+    public void unEliminate(OfflinePlayer player) {
+        NightPlayer nPlayer = player(player.getUniqueId());
         nPlayer.setEliminated(false);
     }
 

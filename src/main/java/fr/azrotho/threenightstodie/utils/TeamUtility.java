@@ -58,7 +58,7 @@ public class TeamUtility {
         }
         if(!checkIfTeamExists("adminTeam")) {
             adminTeam = plugin.getServer().getScoreboardManager().getMainScoreboard().registerNewTeam("adminTeam");
-            adminTeam.setPrefix("§4§lORGA §c ");
+            adminTeam.setPrefix("§4§lORGA§c");
             adminTeam.setAllowFriendlyFire(true);
             adminTeam.setCanSeeFriendlyInvisibles(false);
             adminTeam.setColor(ChatColor.DARK_RED);
