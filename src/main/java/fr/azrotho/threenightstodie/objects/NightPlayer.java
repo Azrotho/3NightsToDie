@@ -9,6 +9,7 @@ public class NightPlayer {
     private int vote;
     private boolean isMayor;
     private boolean isEliminated;
+    private boolean hasVoted;
 
     public NightPlayer(UUID uuid) {
         this.uuid = uuid;
@@ -17,6 +18,7 @@ public class NightPlayer {
         this.vote = 0;
         this.isMayor = false;
         this.isEliminated = false;
+        this.hasVoted = false;
     }
 
     public UUID getUuid() {
@@ -61,5 +63,9 @@ public class NightPlayer {
 
     public void setEliminated(boolean eliminated) {
         isEliminated = eliminated;
+    }
+
+    public boolean hasVoted() {
+        return hasVoted;
     }
 }

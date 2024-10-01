@@ -23,38 +23,46 @@ public class ManoirUtility {
             }
         }
         return false;
-    }
+        }
 
     public void giveReward(Player player, long ticks) {
-        if(ticks == 20 * 60 * 1) {
-            player.getInventory().addItem(new ItemStack(Material.BREAD, 2));
+        int minutes = (int) (ticks / (20 * 60));
+        ItemStack reward = null;
+
+        switch (minutes) {
+            case 1:
+            reward = new ItemStack(Material.BREAD, 2);
+            break;
+            case 2:
+            reward = new ItemStack(Material.BREAD, 4);
+            break;
+            case 3:
+            reward = new ItemStack(Material.BREAD, 6);
+            break;
+            case 4:
+            reward = new ItemStack(Material.BREAD, 8);
+            break;
+            case 5:
+            reward = new ItemStack(Material.COOKED_MUTTON, 4);
+            break;
+            case 6:
+            reward = new ItemStack(Material.COOKED_MUTTON, 5);
+            break;
+            case 7:
+            reward = new ItemStack(Material.COOKED_MUTTON, 6);
+            break;
+            case 8:
+            reward = new ItemStack(Material.COOKED_BEEF, 6);
+            break;
+            case 9:
+            reward = new ItemStack(Material.COOKED_BEEF, 7);
+            break;
+            case 10:
+            reward = new ItemStack(Material.GOLDEN_CARROT, 10);
+            break;
         }
-        if(ticks == 20 * 60 * 2) {
-            player.getInventory().addItem(new ItemStack(Material.BREAD, 4));
-        }
-        if(ticks == 20 * 60 * 3) {
-            player.getInventory().addItem(new ItemStack(Material.BREAD, 6));
-        }
-        if(ticks == 20 * 60 * 4) {
-            player.getInventory().addItem(new ItemStack(Material.BREAD, 8));
-        }
-        if(ticks == 20 * 60 * 5) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_MUTTON, 4));
-        }
-        if(ticks == 20 * 60 * 6) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_MUTTON, 5));
-        }
-        if(ticks == 20 * 60 * 7) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_MUTTON, 6));
-        }
-        if(ticks == 20 * 60 * 8) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 6));
-        }
-        if(ticks == 20 * 60 * 9) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 7));
-        }
-        if(ticks == 20 * 60 * 10) {
-            player.getInventory().addItem(new ItemStack(Material.GOLDEN_CARROT, 10));
+        if (reward != null) {
+            player.getInventory().addItem(reward);
         }
     }
 }
