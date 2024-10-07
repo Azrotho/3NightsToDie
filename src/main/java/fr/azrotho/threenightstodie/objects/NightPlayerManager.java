@@ -2,12 +2,14 @@ package fr.azrotho.threenightstodie.objects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Team;
 
 @SuppressWarnings("null")
 public class NightPlayerManager {
@@ -89,5 +91,15 @@ public class NightPlayerManager {
     public boolean isEliminated(Player player) {
         NightPlayer nPlayer = player(player);
         return nPlayer.isEliminated();
+    }
+    
+    public boolean isAdmin(Player player) {
+        Set<Team> team = player.getScoreboard().getTeams();
+        for(Team t : team) {
+            if(t.getName().equals("adminTeam")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
