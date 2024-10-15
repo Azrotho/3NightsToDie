@@ -29,7 +29,7 @@ public class ManoirUtility {
         int minutes = (int) (ticks / (20 * 60));
         ItemStack reward = null;
 
-        if(ticks % 20 * 60 != 0) {
+        if((ticks % (20 * 60)) != 0) {
             return;
         }
 
