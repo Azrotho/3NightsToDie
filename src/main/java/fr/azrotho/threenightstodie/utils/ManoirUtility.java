@@ -7,13 +7,13 @@ import org.bukkit.inventory.ItemStack;
 public class ManoirUtility {
 
     public Boolean isInManoir(Player player) {
-        int x1 = 0;
+        int x1 = -50;
         int y1 = 0;
-        int z1 = 0;
+        int z1 = -50;
 
-        int x2 = 0;
-        int y2 = 0;
-        int z2 = 0;
+        int x2 = 50;
+        int y2 = 90;
+        int z2 = 50;
 
         if(player.getLocation().getX() > Math.min(x1, x2) && player.getLocation().getX() < Math.max(x1, x2)) {
             if(player.getLocation().getY() > Math.min(y1, y2) && player.getLocation().getY() < Math.max(y1, y2)) {
@@ -28,6 +28,10 @@ public class ManoirUtility {
     public void giveReward(Player player, long ticks) {
         int minutes = (int) (ticks / (20 * 60));
         ItemStack reward = null;
+
+        if(ticks % 20 * 60 != 0) {
+            return;
+        }
 
         switch (minutes) {
             case 1:

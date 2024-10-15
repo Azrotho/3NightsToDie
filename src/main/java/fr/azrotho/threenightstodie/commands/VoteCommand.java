@@ -8,7 +8,6 @@ public class VoteCommand implements CommandExecutor{
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String name, String[] args) {
-        return true;
+        return true; // TODO: IMPLEMENT THIS
     }
-    
 }
