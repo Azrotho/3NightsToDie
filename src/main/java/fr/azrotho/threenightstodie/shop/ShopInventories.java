@@ -25,6 +25,7 @@ public class ShopInventories {
 
     public void openShopPlayer(Player player) {
         Inventory inv = Bukkit.createInventory(null, 54, "§cBoutique");
+        player.openInventory(inv);
         for(int i = 0; i < 54; i++) {
             switch(i) {
                 case 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,49,50,51,52,53 -> {
@@ -46,6 +47,7 @@ public class ShopInventories {
 
     public void openShopChangeColor(Player player) {
         Inventory inv = Bukkit.createInventory(null, 54, "§cChanger la couleur");
+        player.openInventory(inv);
         int count = 0;
         for(int i = 0; i < 54; i++) {
             switch(i) {
@@ -62,6 +64,7 @@ public class ShopInventories {
 
     public void openShopTargetPlayer(Player player) {
         Inventory inv = Bukkit.createInventory(null, 54, "§cCibler un joueur");
+        player.openInventory(inv);
         int count = 0;
         for(int i = 0; i < 54; i++) {
             switch(i) {
@@ -78,6 +81,7 @@ public class ShopInventories {
 
     public void openChangeColorPlayer(Player player, ItemStack itemStack) {
         Inventory inv = Bukkit.createInventory(null, 54, "§4Changer la couleur");
+        player.openInventory(inv);
         for(int i = 0; i < 54; i++) {
             switch(i) {
                 case 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,49,50,51,52,53 -> {
@@ -102,13 +106,13 @@ public class ShopInventories {
     public ItemStack changeColorShopItem() {
         ItemStack item = new ItemStack(Material.RED_DYE);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("§cChanger la couleure d'un joueur");
+        meta.setDisplayName("§cChanger la couleur d'un joueur");
         meta.setLore(new ArrayList<>(List.of(
             "§7Changer la couleur d'un joueur parmi:",
             "§aVert §7si vous innocentez un joueur",
             "§eJaune §7Si vous ne faites moyennement confiance à un joueur",
             "§cRouge §7Si vous ne faites pas confiance du tout à un joueur",
-            "   + vous octroie un tracker (fonctionne tant qu'il est \"rouge\")",
+            "   §7+ vous octroie un tracker (fonctionne tant qu'il est \"rouge\")",
             "§c",
             "§7(vous pouvez changer la couleur d'un joueur qu'une fois par partie.)",
             "§7(et vous pouvez changer votre couleur)"

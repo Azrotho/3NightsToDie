@@ -15,6 +15,7 @@ import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
 import fr.azrotho.threenightstodie.utils.NPCUtility;
 import fr.azrotho.threenightstodie.utils.TeamUtility;
+import fr.azrotho.threenightstodie.utils.TrackerUtility;
 
 public class ThreeNightsToDiePlugin extends JavaPlugin {
 
@@ -23,12 +24,15 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     private NPCUtility npcUtility;
     private TeamUtility teamUtility;
     private NightGame nightGame;
+    private TrackerUtility trackerUtility;
 
     @Override
     public void onEnable() {
         instance = this;
         npcUtility = new NPCUtility(this);
         nightGame = new NightGame();
+
+        trackerUtility = new TrackerUtility(this);
 
         npcUtility.init(new Location(Bukkit.getWorld("world"), 0, 90, 0));
         getLogger().info("ThreeNightsToDie plugin enabled");
@@ -71,5 +75,9 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
     public NightGame nightGame() {
         return this.nightGame;
+    }
+
+    public TrackerUtility trackerUtility() {
+        return this.trackerUtility;
     }
 }

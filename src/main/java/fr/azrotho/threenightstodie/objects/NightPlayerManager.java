@@ -102,4 +102,14 @@ public class NightPlayerManager {
         }
         return false;
     }
+
+    public boolean isInRedTeam(Player player) {
+        Set<Team> team = player.getScoreboard().getTeams();
+        for(Team t : team) {
+            if(t.getName().equals("redTeam")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

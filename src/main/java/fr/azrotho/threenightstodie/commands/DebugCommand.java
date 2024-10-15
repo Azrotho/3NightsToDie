@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
+import fr.azrotho.threenightstodie.shop.ShopInventories;
 
 public class DebugCommand implements CommandExecutor {
 
@@ -32,6 +33,19 @@ public class DebugCommand implements CommandExecutor {
             }
             case "shop" -> {
                 sender.sendMessage("§aCommande shop");
+                ShopInventories shopInventories = new ShopInventories(plugin);
+                if(args[1].equals("open")) {
+                    Player player = Bukkit.getPlayer(args[2]);
+                    if(player == null) {
+                        sender.sendMessage("§cJoueur introuvable");
+                        return true;
+                    }
+                    shopInventories.openShopPlayer(player);
+                }
+                if(args[1].equals("openSelf")) {
+                    Player player = (Player) sender;
+                    shopInventories.openShopPlayer(player);
+                }
             }
             case "team" -> {
                 switch (args[1]) {
