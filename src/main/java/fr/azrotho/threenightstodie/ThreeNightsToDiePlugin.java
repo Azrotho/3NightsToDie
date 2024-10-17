@@ -1,7 +1,5 @@
 package fr.azrotho.threenightstodie;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.azrotho.threenightstodie.commands.BroadcastCommnad;
@@ -35,7 +33,8 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
         trackerUtility = new TrackerUtility(this);
 
-        npcUtility.init(new Location(Bukkit.getWorld("world"), 0, 90, 0));
+
+        //npcUtility.init(new Location(Bukkit.getWorld("world"), 0, 90, 0));
         getLogger().info("ThreeNightsToDie plugin enabled");
 
         teamUtility = new TeamUtility(this);

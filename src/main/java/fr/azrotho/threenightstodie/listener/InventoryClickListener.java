@@ -9,7 +9,6 @@ import fr.azrotho.threenightstodie.shop.ShopClick;
 
 public class InventoryClickListener implements Listener {
 
-
     private ThreeNightsToDiePlugin plugin;
 
     public InventoryClickListener(ThreeNightsToDiePlugin plugin) {
@@ -18,8 +17,7 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        ShopClick shopClick = new ShopClick(plugin);
+        ShopClick shopClick = new ShopClick(this.plugin);
         shopClick.onInventoryClick(event);
     }
-    
 }

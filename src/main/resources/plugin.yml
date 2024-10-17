@@ -3,6 +3,7 @@ main: fr.azrotho.threenightstodie.ThreeNightsToDiePlugin
 version: 1.0
 api-version: 1.21
 author: Azrotho
+depend: [FancyNpcs]
 commands:
   debug:
     description: Debug command

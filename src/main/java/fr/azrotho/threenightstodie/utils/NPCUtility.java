@@ -1,5 +1,7 @@
 package fr.azrotho.threenightstodie.utils;
 
+import java.util.UUID;
+
 import org.bukkit.Location;
 
 import de.oliver.fancynpcs.api.FancyNpcsPlugin;
@@ -19,13 +21,12 @@ public class NPCUtility {
 
 
     public void init(Location location) {
-        if(FancyNpcsPlugin.get().getNpcManager().getNpc("shop_npc") != null) {
-            Npc npcToRemove = FancyNpcsPlugin.get().getNpcManager().getNpc("shop_npc");
-            npcToRemove.removeForAll();
-            FancyNpcsPlugin.get().getNpcManager().removeNpc(npcToRemove);
-
-        }
-        NpcData data = new NpcData("shop_npc", null, location);
+        // if(FancyNpcsPlugin.get().getNpcManager().getNpc("shop_npc") != null) {
+        //     Npc npcToRemove = FancyNpcsPlugin.get().getNpcManager().getNpc("shop_npc");
+        //     npcToRemove.removeForAll();
+        //     FancyNpcsPlugin.get().getNpcManager().removeNpc(npcToRemove);
+        // }
+        NpcData data = new NpcData("shop_npc", UUID.fromString("2c2561aa-4f8c-409b-805f-26bc23344d3a"), location);
         SkinFetcher skin = new SkinFetcher("Azrotho");
         data.setSkin(skin);
         data.setDisplayName(name);

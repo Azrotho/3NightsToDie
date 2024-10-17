@@ -1,6 +1,7 @@
 package fr.azrotho.threenightstodie.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -86,6 +87,7 @@ public class DebugCommand implements CommandExecutor {
             }
             case "npc" -> {
                 sender.sendMessage("§aCommande npc");
+                plugin.npcUtility().init(new Location(Bukkit.getWorld("world"), 0, 90, 0));
             }
             case "ranking" -> {
                 sender.sendMessage("§aCommande ranking");
