@@ -12,6 +12,7 @@ import fr.azrotho.threenightstodie.listener.OnQuitListener;
 import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
+import fr.azrotho.threenightstodie.shop.ShopClick;
 import fr.azrotho.threenightstodie.utils.NPCUtility;
 import fr.azrotho.threenightstodie.utils.TeamUtility;
 import fr.azrotho.threenightstodie.utils.TrackerUtility;
@@ -24,12 +25,15 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     private TeamUtility teamUtility;
     private NightGame nightGame;
     private TrackerUtility trackerUtility;
+    private ShopClick shopClick;
 
     @Override
     public void onEnable() {
         instance = this;
         npcUtility = new NPCUtility(this);
         nightGame = new NightGame();
+
+        shopClick = new ShopClick(this);
 
         trackerUtility = new TrackerUtility(this);
 
@@ -80,5 +84,9 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
     public TrackerUtility trackerUtility() {
         return this.trackerUtility;
+    }
+
+    public ShopClick shopClick() {
+        return this.shopClick;
     }
 }

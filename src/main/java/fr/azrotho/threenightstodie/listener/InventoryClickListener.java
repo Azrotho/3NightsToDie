@@ -5,7 +5,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
-import fr.azrotho.threenightstodie.shop.ShopClick;
 
 public class InventoryClickListener implements Listener {
 
@@ -17,7 +16,6 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        ShopClick shopClick = new ShopClick(this.plugin);
-        shopClick.onInventoryClick(event);
+        plugin.shopClick().onInventoryClick(event);
     }
 }
