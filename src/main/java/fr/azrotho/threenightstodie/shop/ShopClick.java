@@ -9,12 +9,14 @@ import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
 public class ShopClick {
 
 
-    ThreeNightsToDiePlugin plugin;
-    ShopInventories shopInventories = new ShopInventories(plugin);
+    @SuppressWarnings("unused")
+    private ThreeNightsToDiePlugin plugin;
+    private ShopInventories shopInventories;
 
 
     public ShopClick(ThreeNightsToDiePlugin plugin) {
         this.plugin = plugin;
+        this.shopInventories = new ShopInventories(plugin);
     }
 
     @EventHandler
