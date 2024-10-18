@@ -55,8 +55,10 @@ public class ShopInventories {
                     inv.setItem(i, border);
                 }
                 default -> {
-                    inv.setItem(i, this.getPlayersHeads(false).get(count));
-                    count++;
+                    if(count < this.getPlayersHeads(false).size()) {
+                        inv.setItem(i, this.getPlayersHeads(false).get(count));
+                        count++;
+                    }
                 }
             }
         }
@@ -72,8 +74,10 @@ public class ShopInventories {
                     inv.setItem(i, border);
                 }
                 default -> {
-                    inv.setItem(i, this.getPlayersHeads(true).get(count));
-                    count++;
+                    if(count < this.getPlayersHeads(false).size()) {
+                        inv.setItem(i, this.getPlayersHeads(false).get(count));
+                        count++;
+                    }
                 }
             }
         }
