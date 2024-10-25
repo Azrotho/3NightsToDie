@@ -8,7 +8,7 @@ public class NightGame {
 
     public NightGame() {
         this.voteEnabled = false;
-        this.targetPlayerEnabled = true;
+        this.targetPlayerEnabled = false;
     }
 
     public boolean isVoteEnabled() {

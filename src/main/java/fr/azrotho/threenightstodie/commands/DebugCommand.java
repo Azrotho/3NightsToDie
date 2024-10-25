@@ -47,6 +47,9 @@ public class DebugCommand implements CommandExecutor {
                     Player player = (Player) sender;
                     shopInventories.openShopPlayer(player);
                 }
+                if(args[1].equals("resetShop")) {
+                    plugin.nightPlayerManager().resetForAllPlayersTargetingAndColor();
+                }
             }
             case "team" -> {
                 switch (args[1]) {
@@ -99,7 +102,14 @@ public class DebugCommand implements CommandExecutor {
                 sender.sendMessage("§aCommande mayor");
             }
             case "targetPlayer" -> {
-                sender.sendMessage("Commande targetPlayer");
+                switch (args[1]) {
+                    case "enable" -> {
+                        plugin.nightGame().setTargetPlayerEnabled(true);
+                    } 
+                    default -> {
+                        plugin.nightGame().setTargetPlayerEnabled(false);
+                    }
+                }
             }
             default -> {
                 sender.sendMessage("§cCommande inconnue, faites /debug help pour voir les commandes disponibles");

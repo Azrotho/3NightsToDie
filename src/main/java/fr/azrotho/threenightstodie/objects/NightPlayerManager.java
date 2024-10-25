@@ -112,4 +112,58 @@ public class NightPlayerManager {
         }
         return false;
     }
+
+    public boolean hasVoted(Player player) {
+        NightPlayer nPlayer = player(player);
+        return nPlayer.hasVoted();
+    }
+
+    public void aVote(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setHasVoted(true);
+    }
+
+    public boolean hasChangeColor(Player player) {
+        NightPlayer nPlayer = player(player);
+        return nPlayer.hasChangedColor();
+    }
+
+    public void changeColor(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setHasChangedColor(true);
+    }
+
+    public boolean hasTargeted(Player player) {
+        NightPlayer nPlayer = player(player);
+        return nPlayer.hasTargeted();
+    }
+
+    public void target(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setHasTargeted(true);
+    }
+
+    public void resetForAllPlayersTargetingAndColor() {
+        for(NightPlayer nPlayer : players) {
+            nPlayer.setHasChangedColor(false);
+            nPlayer.setHasTargeted(false);
+        }
+    }
+
+    public void unTarget(Player player) {
+        NightPlayer nPlayer = player(player);
+        nPlayer.setHasTargeted(false);
+    }
+
+    public void resetVote() {
+        for(NightPlayer nPlayer : players) {
+            nPlayer.setHasVoted(false);
+        }
+    }
+
+    public void untargetAllPlayers() {
+        for(NightPlayer nPlayer : players) {
+            nPlayer.setHasTargeted(false);
+        }
+    }
 }

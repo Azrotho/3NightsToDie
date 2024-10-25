@@ -83,8 +83,13 @@ public class ShopInventories {
         }
     }
 
-    public void openChangeColorPlayer(Player player, ItemStack itemStack) {
+    public void openChangeColorPlayer(Player player, Player target) {
         Inventory inv = Bukkit.createInventory(null, 54, "§4Changer la couleur");
+        ItemStack skullTarget = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta skullMeta = (SkullMeta) skullTarget.getItemMeta();
+        skullMeta.setOwningPlayer(target);
+        skullMeta.setDisplayName(target.getName());
+        skullTarget.setItemMeta(skullMeta);
         player.openInventory(inv);
         for(int i = 0; i < 54; i++) {
             switch(i) {
@@ -92,7 +97,7 @@ public class ShopInventories {
                     inv.setItem(i, border);
                 }
                 case 13 -> {
-                    inv.setItem(i, itemStack);
+                    inv.setItem(i, skullTarget);
                 }
                 case 28 -> {
                     inv.setItem(i, this.greenColorItem());
@@ -119,7 +124,9 @@ public class ShopInventories {
             "   §7+ vous octroie un tracker (fonctionne tant qu'il est \"rouge\")",
             "§c",
             "§7(vous pouvez changer la couleur d'un joueur qu'une fois par partie.)",
-            "§7(et vous pouvez changer votre couleur)"
+            "§7(et vous pouvez changer votre couleur)",
+            "§7",
+            "§7Coût: §d5 diamants"
         )));
         item.setItemMeta(meta);
         return item;
@@ -131,7 +138,10 @@ public class ShopInventories {
         meta.setDisplayName("§cCibler un joueur");
         meta.setLore(List.of(
             "§7Cibler un joueur pour le tuer",
-            "§7Vous ne pouvez cibler qu'un joueur par jour"
+            "§7Vous ne pouvez cibler qu'un joueur par jour",
+            "Cela lui applique un effet de glowing pour la journée",
+            "§7",
+            "§7Coût: §d30 diamants"
         ));
         item.setItemMeta(meta);
         return item;
@@ -151,6 +161,14 @@ public class ShopInventories {
             heads.add(item);
         }
         return heads;
+    }
+
+    public ItemStack alreadyUseItem() {
+        ItemStack item = new ItemStack(Material.BARRIER);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§cVous avez déjà utilisé cette action");
+        item.setItemMeta(meta);
+        return item;
     }
 
     public ItemStack greenColorItem() {

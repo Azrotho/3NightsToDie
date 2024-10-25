@@ -1,8 +1,12 @@
 package fr.azrotho.threenightstodie.shop;
 
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import fr.azrotho.threenightstodie.ThreeNightsToDiePlugin;
 
@@ -56,9 +60,22 @@ public class ShopClick {
     }
 
     public void onClickOnHeadColorShop(InventoryClickEvent event) {
+        ItemStack clickedItem = event.getCurrentItem();
+        Player playerClicker = (Player) event.getWhoClicked();
+        if(clickedItem.getType().equals(Material.PLAYER_HEAD)) {
+            SkullMeta skullMeta = (SkullMeta) clickedItem.getItemMeta();
+            OfflinePlayer ownerPlayer = skullMeta.getOwningPlayer();
+            if(ownerPlayer.isOnline()) {
+                Player target = ownerPlayer.getPlayer();
+                shopInventories.openChangeColorPlayer(playerClicker, target);
+            } else {
+                playerClicker.sendMessage("Ce joueur est déconnecté.");
+            }
+        }
     }
 
     public void onClickOnColorInColorShop(InventoryClickEvent event) {
+        
     }
 
     public void onClickOnTargetPlayerShop(InventoryClickEvent event) {
