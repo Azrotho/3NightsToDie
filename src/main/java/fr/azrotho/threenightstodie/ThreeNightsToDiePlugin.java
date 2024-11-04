@@ -12,6 +12,7 @@ import fr.azrotho.threenightstodie.listener.OnQuitListener;
 import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
+import fr.azrotho.threenightstodie.runnable.TrackerGestionRunnable;
 import fr.azrotho.threenightstodie.shop.ShopClick;
 import fr.azrotho.threenightstodie.utils.NPCUtility;
 import fr.azrotho.threenightstodie.utils.TeamUtility;
@@ -55,6 +56,9 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
         ManoirGestionRunnable manoirGestionRunnable = new ManoirGestionRunnable(this);
         manoirGestionRunnable.runTaskTimer(this, 0, 0);
+
+        TrackerGestionRunnable trackerGestionRunnable = new TrackerGestionRunnable(this);
+        trackerGestionRunnable.runTaskTimer(this, 0, 2);
     }
 
     @Override
