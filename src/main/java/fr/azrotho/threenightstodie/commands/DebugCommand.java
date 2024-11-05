@@ -111,6 +111,9 @@ public class DebugCommand implements CommandExecutor {
                     }
                 }
             }
+            case "tracker" -> {
+                sender.sendMessage("Commande de con");
+            }
             default -> {
                 sender.sendMessage("§cCommande inconnue, faites /debug help pour voir les commandes disponibles");
             }

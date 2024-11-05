@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
@@ -94,9 +95,9 @@ public class NightPlayerManager {
     }
     
     public boolean isAdmin(Player player) {
-        Set<Team> team = player.getScoreboard().getTeams();
-        for(Team t : team) {
-            if(t.getName().equals("adminTeam")) {
+        Team adminTeam = Bukkit.getScoreboardManager().getMainScoreboard().getTeam("adminTeam");
+        for(OfflinePlayer member : adminTeam.getPlayers()) {
+            if(member.getUniqueId().equals(player.getUniqueId())) {
                 return true;
             }
         }

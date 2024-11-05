@@ -147,21 +147,22 @@ public class ShopInventories {
         return item;
     }
 
-    public List<ItemStack> getPlayersHeads(boolean withAdmins) {
-        List<ItemStack> heads = new ArrayList<>();
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            if(!withAdmins && plugin.nightPlayerManager().isAdmin(player)) {
-                continue;
-            }
-            ItemStack item = new ItemStack(Material.PLAYER_HEAD);
-            SkullMeta meta = (SkullMeta) item.getItemMeta();
-            meta.setOwningPlayer(player);
-            meta.setDisplayName(player.getName());
-            item.setItemMeta(meta);
-            heads.add(item);
+public List<ItemStack> getPlayersHeads(boolean withAdmins) {
+    List<ItemStack> heads = new ArrayList<>();
+    for (Player player : Bukkit.getOnlinePlayers()) {
+        if (!withAdmins && plugin.nightPlayerManager().isAdmin(player)) {
+            Bukkit.broadcastMessage("Le joeueur: " +  player.getName() + " est " + plugin.nightPlayerManager().isAdmin(player));
+            continue;
         }
-        return heads;
+        ItemStack item = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) item.getItemMeta();
+        meta.setOwningPlayer(player);
+        meta.setDisplayName(player.getName());
+        item.setItemMeta(meta);
+        heads.add(item);
     }
+    return heads;
+}
 
     public ItemStack alreadyUseItem() {
         ItemStack item = new ItemStack(Material.BARRIER);

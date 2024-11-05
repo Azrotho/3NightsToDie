@@ -62,6 +62,9 @@ public class ShopClick {
     public void onClickOnHeadColorShop(InventoryClickEvent event) {
         ItemStack clickedItem = event.getCurrentItem();
         Player playerClicker = (Player) event.getWhoClicked();
+        if(clickedItem == null) {
+            return;
+        }
         if(clickedItem.getType().equals(Material.PLAYER_HEAD)) {
             SkullMeta skullMeta = (SkullMeta) clickedItem.getItemMeta();
             OfflinePlayer ownerPlayer = skullMeta.getOwningPlayer();

@@ -28,6 +28,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
     private TrackerUtility trackerUtility;
     private ShopClick shopClick;
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public void onEnable() {
         instance = this;
