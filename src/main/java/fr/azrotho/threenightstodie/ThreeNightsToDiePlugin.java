@@ -1,14 +1,11 @@
 package fr.azrotho.threenightstodie;
 
+import fr.azrotho.threenightstodie.listener.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.azrotho.threenightstodie.commands.BroadcastCommnad;
 import fr.azrotho.threenightstodie.commands.DebugCommand;
 import fr.azrotho.threenightstodie.commands.VoteCommand;
-import fr.azrotho.threenightstodie.listener.InventoryClickListener;
-import fr.azrotho.threenightstodie.listener.NPCInteractListener;
-import fr.azrotho.threenightstodie.listener.OnJoinListener;
-import fr.azrotho.threenightstodie.listener.OnQuitListener;
 import fr.azrotho.threenightstodie.objects.NightGame;
 import fr.azrotho.threenightstodie.objects.NightPlayerManager;
 import fr.azrotho.threenightstodie.runnable.ManoirGestionRunnable;
@@ -50,6 +47,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
         getServer().getPluginManager().registerEvents(new NPCInteractListener(this), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerDeathListener(this), this);
 
         getCommand("vote").setExecutor(new VoteCommand());
         getCommand("debug").setExecutor(new DebugCommand(this));

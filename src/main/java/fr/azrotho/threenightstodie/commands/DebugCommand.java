@@ -94,6 +94,11 @@ public class DebugCommand implements CommandExecutor {
             }
             case "ranking" -> {
                 sender.sendMessage("§aCommande ranking");
+                switch (args[1]) {
+                    case "deaths" -> {
+                        plugin.nightPlayerManager().displayDeathRanking();
+                    }
+                }
             }
             case "help" -> {
                 sender.sendMessage("§aCommande help");

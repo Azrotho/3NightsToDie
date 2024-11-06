@@ -168,4 +168,32 @@ public class NightPlayerManager {
             nPlayer.setHasTargeted(false);
         }
     }
+
+    public List<Player> getDeathRanking() {
+        List <Player> ranking = new ArrayList<>();
+        for(int i = 0; i < Bukkit.getOnlinePlayers().size(); i++) {
+            Player best = null;
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                NightPlayer nPlayer = player(player);
+                if(!ranking.contains(nPlayer)) {
+                    if(best == null) {
+                        best = player;
+                    } else {
+                        if(nPlayer.death() > player(best).death()) {
+                            best = player;
+                        }
+                    }
+                }
+            }
+            ranking.add(best);
+        }
+        return ranking;
+    }
+
+    public void displayDeathRanking() {
+        List <Player> ranking = getDeathRanking();
+        for(int i = 0; i < ranking.size(); i++) {
+            Bukkit.broadcastMessage("§c" + (i + 1) + " - " + ranking.get(i).getName() + " : " + player(ranking.get(i)).death() + " morts");
+        }
+    }
 }
