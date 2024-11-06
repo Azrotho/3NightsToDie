@@ -49,7 +49,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new NPCInteractListener(this), this);
         getServer().getPluginManager().registerEvents(new OnPlayerDeathListener(this), this);
 
-        getCommand("vote").setExecutor(new VoteCommand());
+        getCommand("vote").setExecutor(new VoteCommand(this));
         getCommand("debug").setExecutor(new DebugCommand(this));
         getCommand("broadcast").setExecutor(new BroadcastCommnad());
 
