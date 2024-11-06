@@ -40,7 +40,7 @@ public class ShopClick {
             event.setCancelled(true);
             return;
         } 
-        if(event.getView().getTitle().equals("§cJoueur cible")) {
+        if(event.getView().getTitle().equals("§cCibler un joueur")) {
             onClickOnTargetPlayerShop(event);
             event.setCancelled(true);
             return;
@@ -83,7 +83,7 @@ public class ShopClick {
         if(!(event.getInventory().getItem(13).getType().equals(Material.PLAYER_HEAD))) return;
         Player target = getPlayerFromSkull(event.getInventory().getItem(13));
         Player player = (Player) event.getWhoClicked();
-        if(!(countDiamondInInv(player) < 5)) {
+        if(countDiamondInInv(player) < 5) {
             player.sendMessage("§cVous n'avez pas assez de diamants");
             return;
         }
@@ -91,25 +91,28 @@ public class ShopClick {
             removeDiamondInInv(player, 5);
             player.sendMessage("§aVous avez changé la couleur de " + target.getName() + " en vert");
             plugin.teamUtility().changeTeam(target, plugin.teamUtility().greenTeam());
-            plugin.nightPlayerManager().hasChangeColor(player);
+            plugin.nightPlayerManager().changeColor(player);
+            player.closeInventory();
         }
         if(event.getCurrentItem().getType().equals(Material.YELLOW_DYE)) {
             removeDiamondInInv(player, 5);
             player.sendMessage("§aVous avez changé la couleur de " + target.getName() + " en jaune");
             plugin.teamUtility().changeTeam(target, plugin.teamUtility().yellowTeam());
-            plugin.nightPlayerManager().hasChangeColor(player);
+            plugin.nightPlayerManager().changeColor(player);
+            player.closeInventory();
         }
         if(event.getCurrentItem().getType().equals(Material.RED_DYE)) {
             removeDiamondInInv(player, 5);
             player.sendMessage("§aVous avez changé la couleur de " + target.getName() + " en rouge et vous avez reçu un tracker");
             plugin.teamUtility().changeTeam(target, plugin.teamUtility().redTeam());
-            plugin.nightPlayerManager().hasChangeColor(player);
+            plugin.nightPlayerManager().changeColor(player);
             player.getInventory().addItem(plugin.trackerUtility().getTracker(target));
+            player.closeInventory();
         }
     }
 
     public void onClickOnTargetPlayerShop(InventoryClickEvent event) {
-        if(!(countDiamondInInv((Player) event.getWhoClicked()) < 30)) {
+        if(countDiamondInInv((Player) event.getWhoClicked()) < 30) {
             ((Player) event.getWhoClicked()).sendMessage("§cVous n'avez pas assez de diamants");
             return;
         }

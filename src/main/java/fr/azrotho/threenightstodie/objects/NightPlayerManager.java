@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("null")
 public class NightPlayerManager {
@@ -27,7 +28,7 @@ public class NightPlayerManager {
     }
     
     @Nullable
-    public NightPlayer player(Player player) {
+    public NightPlayer player(@NotNull Player player) {
         return player(player.getUniqueId());
     }
 

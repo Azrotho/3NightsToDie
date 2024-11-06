@@ -32,13 +32,21 @@ public class ShopInventories {
                     inv.setItem(i, border);
                 }
                 case 29 -> {
-                    inv.setItem(i, changeColorShopItem());
+                    if(plugin.nightPlayerManager().hasChangeColor(player)) {
+                        inv.setItem(i, alreadyUseItem());
+                    } else {
+                        inv.setItem(i, changeColorShopItem());
+                    }
                 }
                 case 33 -> {
                     if(plugin.nightGame().isTargetPlayerEnabled()) {
-                        inv.setItem(i, targetPlayerShopItem());
+                        if(plugin.nightPlayerManager().hasTargeted(player)) {
+                            inv.setItem(i, alreadyUseItem());
+                        } else {
+                            inv.setItem(i, targetPlayerShopItem());
+                        }
                     } else {
-                        inv.setItem(i, border);
+                        inv.setItem(i, notAvalibleYet());
                     }
                 }
             }
@@ -167,6 +175,14 @@ public List<ItemStack> getPlayersHeads(boolean withAdmins) {
         ItemStack item = new ItemStack(Material.BARRIER);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§cVous avez déjà utilisé cette action");
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public ItemStack notAvalibleYet() {
+        ItemStack item = new ItemStack(Material.BARRIER);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§cCette action n'est pas encore disponible");
         item.setItemMeta(meta);
         return item;
     }
