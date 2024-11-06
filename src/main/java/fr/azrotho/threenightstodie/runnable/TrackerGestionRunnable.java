@@ -23,8 +23,8 @@ public class TrackerGestionRunnable extends BukkitRunnable {
     @Override
     public void run() {
         for(Player player : Bukkit.getOnlinePlayers()) {
-            if(player.getItemInUse() != null) {
-                ItemStack item = player.getItemInUse();
+            if(player.getItemInHand() != null) {
+                ItemStack item = player.getItemInHand();
                 if(item.getItemMeta() != null) {
                     ItemMeta meta = item.getItemMeta();
                     if(meta.getDisplayName().contains("§c§lTracker")) {
@@ -39,6 +39,8 @@ public class TrackerGestionRunnable extends BukkitRunnable {
                                 } else {
                                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c" + name + " n'est pas dans le même monde que vous"));
                                 }
+                            } else {
+                                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c" + name + " n'est plus rouge"));
                             }
                         } else {
                             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c" + name + " n'est plus en ligne"));

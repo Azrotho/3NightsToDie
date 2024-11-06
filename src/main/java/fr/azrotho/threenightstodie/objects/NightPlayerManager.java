@@ -105,9 +105,9 @@ public class NightPlayerManager {
     }
 
     public boolean isInRedTeam(Player player) {
-        Set<Team> team = player.getScoreboard().getTeams();
-        for(Team t : team) {
-            if(t.getName().equals("redTeam")) {
+        Team redTeam = Bukkit.getScoreboardManager().getMainScoreboard().getTeam("redTeam");
+        for(OfflinePlayer member : redTeam.getPlayers()) {
+            if(member.getUniqueId().equals(player.getUniqueId())) {
                 return true;
             }
         }

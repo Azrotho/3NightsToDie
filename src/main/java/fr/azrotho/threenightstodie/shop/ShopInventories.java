@@ -151,7 +151,6 @@ public List<ItemStack> getPlayersHeads(boolean withAdmins) {
     List<ItemStack> heads = new ArrayList<>();
     for (Player player : Bukkit.getOnlinePlayers()) {
         if (!withAdmins && plugin.nightPlayerManager().isAdmin(player)) {
-            Bukkit.broadcastMessage("Le joeueur: " +  player.getName() + " est " + plugin.nightPlayerManager().isAdmin(player));
             continue;
         }
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
