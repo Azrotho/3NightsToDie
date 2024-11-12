@@ -1,5 +1,6 @@
 package fr.azrotho.threenightstodie.shop;
 
+import fr.azrotho.threenightstodie.objects.NightPlayer;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -115,6 +116,34 @@ public class ShopClick {
         if(countDiamondInInv((Player) event.getWhoClicked()) < 30) {
             ((Player) event.getWhoClicked()).sendMessage("§cVous n'avez pas assez de diamants");
             return;
+        }
+
+        if(event.getCurrentItem() == null) return;
+        if(event.getCurrentItem().getType().equals(Material.PLAYER_HEAD)) {
+            SkullMeta skullMeta = (SkullMeta) event.getCurrentItem().getItemMeta();
+            OfflinePlayer ownerPlayer = skullMeta.getOwningPlayer();
+            if(ownerPlayer.isOnline()) {
+                Player target = ownerPlayer.getPlayer();
+                if(event.getInventory().getItem(13).getType().equals(Material.PLAYER_HEAD)) {
+                    Player player = getPlayerFromSkull(event.getInventory().getItem(13));
+                    if(((SkullMeta) event.getCurrentItem().getItemMeta()).getOwningPlayer().getPlayer().equals(player)) {
+                        player.sendMessage("§cVous ne pouvez pas vous cibler vous-même");
+                        return;
+                    }
+                    NightPlayer nTarget = plugin.nightPlayerManager().player(target);
+                    if(nTarget.isTarget()) {
+                        player.sendMessage("§cVous ne pouvez pas cibler un joueur déjà ciblé");
+                        return;
+                    }
+                    removeDiamondInInv(player, 30);
+
+                    nTarget.setTarget(true);
+                    player.sendMessage("§aVous avez ciblé " + target.getName());
+                    player.closeInventory();
+                }
+            } else {
+                ((Player) event.getWhoClicked()).sendMessage("§cCe joueur est déconnecté.");
+            }
         }
     }
 
