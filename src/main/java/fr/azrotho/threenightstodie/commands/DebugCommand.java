@@ -31,6 +31,17 @@ public class DebugCommand implements CommandExecutor {
         switch(args[0]) {
             case "vote" -> {
                 sender.sendMessage("§aCommande vote");
+                switch (args[1]) {
+                    case "enable" -> {
+                        plugin.nightGame().setVoteEnabled(true);
+                    }
+                    case "disable" -> {
+                        plugin.nightGame().setVoteEnabled(false);
+                    }
+                    case "reset" -> {
+                        plugin.nightPlayerManager().resetVote();
+                    }
+                }
             }
             case "shop" -> {
                 sender.sendMessage("§aCommande shop");
@@ -98,6 +109,9 @@ public class DebugCommand implements CommandExecutor {
                     case "deaths" -> {
                         plugin.nightPlayerManager().displayDeathRanking();
                     }
+                    case "votes" -> {
+                        plugin.nightPlayerManager().displayVoteRanking();
+                    }
                 }
             }
             case "help" -> {
@@ -105,6 +119,16 @@ public class DebugCommand implements CommandExecutor {
             }
             case "mayor" -> {
                 sender.sendMessage("§aCommande mayor");
+                Player target = Bukkit.getPlayer(args[1]);
+                if(target == null) {
+                    sender.sendMessage("Joueur déconnecté");
+                    return true;
+                }
+                if(args[2].equalsIgnoreCase("enable")) {
+                    plugin.nightPlayerManager().setMayor(target);
+                } else {
+                    plugin.nightPlayerManager().removeMayor(target);
+                }
             }
             case "targetPlayer" -> {
                 switch (args[1]) {
@@ -117,7 +141,16 @@ public class DebugCommand implements CommandExecutor {
                 }
             }
             case "tracker" -> {
-                sender.sendMessage("Commande de con");
+                sender.sendMessage("Commande de tracker");
+                if(args[1].equals("getTracker")) {
+                    Player target = Bukkit.getPlayer(args[2]);
+                    if(target == null) {
+                        sender.sendMessage("Joueur déconnecté");
+                        return true;
+                    }
+                    Player player = (Player) sender;
+                    player.getInventory().addItem(plugin.trackerUtility().getTracker(target));
+                }
             }
             default -> {
                 sender.sendMessage("§cCommande inconnue, faites /debug help pour voir les commandes disponibles");

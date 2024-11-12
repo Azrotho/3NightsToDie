@@ -196,4 +196,32 @@ public class NightPlayerManager {
             Bukkit.broadcastMessage("§c" + (i + 1) + " - " + ranking.get(i).getName() + " : " + player(ranking.get(i)).death() + " morts");
         }
     }
+
+    public List<Player> getVoteRanking() {
+        List <Player> ranking = new ArrayList<>();
+        for(int i = 0; i < Bukkit.getOnlinePlayers().size(); i++) {
+            Player best = null;
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                NightPlayer nPlayer = player(player);
+                if(!ranking.contains(nPlayer)) {
+                    if(best == null) {
+                        best = player;
+                    } else {
+                        if(nPlayer.vote() > player(best).vote()) {
+                            best = player;
+                        }
+                    }
+                }
+            }
+            ranking.add(best);
+        }
+        return ranking;
+    }
+
+    public void displayVoteRanking() {
+        List <Player> ranking = getVoteRanking();
+        for(int i = 0; i < ranking.size(); i++) {
+            Bukkit.broadcastMessage("§c" + (i + 1) + " - " + ranking.get(i).getName() + " : " + player(ranking.get(i)).death() + " morts");
+        }
+    }
 }
