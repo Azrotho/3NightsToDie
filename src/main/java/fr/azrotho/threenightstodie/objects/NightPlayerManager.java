@@ -221,7 +221,7 @@ public class NightPlayerManager {
     public void displayVoteRanking() {
         List <Player> ranking = getVoteRanking();
         for(int i = 0; i < ranking.size(); i++) {
-            Bukkit.broadcastMessage("§c" + (i + 1) + " - " + ranking.get(i).getName() + " : " + player(ranking.get(i)).death() + " morts");
+            Bukkit.broadcastMessage("§c" + (i + 1) + " - " + ranking.get(i).getName() + " : " + player(ranking.get(i)).death() + " votes");
         }
     }
 }
