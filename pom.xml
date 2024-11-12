@@ -14,6 +14,10 @@
           <name>FancyPlugins Repository</name>
           <url>https://repo.fancyplugins.de/releases</url>
       </repository>
+      <repository>
+          <id>nickapi</id>
+          <url>https://haoshoku.xyz:8081/repository/default/</url>
+      </repository>
     </repositories>
 
     <dependencies>
@@ -33,6 +37,12 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>xyz.haoshoku.nick</groupId>
+            <artifactId>nickapi</artifactId>
+            <version>7.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
