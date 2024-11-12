@@ -3,7 +3,7 @@ main: fr.azrotho.threenightstodie.ThreeNightsToDiePlugin
 version: 1.0
 api-version: 1.21
 author: Azrotho
-depend: [FancyNpcs]
+depend: [FancyNpcs, NickAPI]
 commands:
   debug:
     description: Debug command
@@ -21,3 +21,8 @@ commands:
     aliases:
     - b
     - bc
+  updatemeplease:
+    description: UpdateMePlease command
+    usage: /updatemeplease
+    aliases:
+    - ump

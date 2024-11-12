@@ -1,7 +1,9 @@
 package fr.azrotho.threenightstodie;
 
+import fr.azrotho.threenightstodie.commands.UpdateMePleaseCommand;
 import fr.azrotho.threenightstodie.commands.tabcomplete.DebugCommandTabCompleter;
 import fr.azrotho.threenightstodie.listener.*;
+import fr.azrotho.threenightstodie.runnable.DayCycleGestionRunnable;
 import fr.azrotho.threenightstodie.runnable.EffectGestionRunnable;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -54,6 +56,7 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getCommand("vote").setExecutor(new VoteCommand(this));
         getCommand("debug").setExecutor(new DebugCommand(this));
         getCommand("broadcast").setExecutor(new BroadcastCommnad());
+        getCommand("updatemeplease").setExecutor(new UpdateMePleaseCommand());
 
         getCommand("debug").setTabCompleter(new DebugCommandTabCompleter(this));
 
@@ -65,6 +68,9 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
 
         EffectGestionRunnable effectGestionRunnable = new EffectGestionRunnable(this);
         effectGestionRunnable.runTaskTimer(this, 0, 2);
+
+        DayCycleGestionRunnable dayCycleGestionRunnable = new DayCycleGestionRunnable(this);
+        dayCycleGestionRunnable.runTaskTimer(this, 0, 0);
     }
 
     @Override
