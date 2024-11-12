@@ -50,6 +50,7 @@ public class VoteCommand implements CommandExecutor {
         NightPlayer nTarget = plugin.nightPlayerManager().player(target);
         if(nPlayer.isMayor()) {
             nTarget.setVote(nTarget.vote() + 2);
+            player.sendMessage("§e§lVous êtes le maire, votre vote compte double");
         } else {
             nTarget.setVote(nTarget.vote() + 1);
         }

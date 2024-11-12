@@ -1,6 +1,8 @@
 package fr.azrotho.threenightstodie;
 
+import fr.azrotho.threenightstodie.commands.tabcomplete.DebugCommandTabCompleter;
 import fr.azrotho.threenightstodie.listener.*;
+import fr.azrotho.threenightstodie.runnable.EffectGestionRunnable;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.azrotho.threenightstodie.commands.BroadcastCommnad;
@@ -53,11 +55,16 @@ public class ThreeNightsToDiePlugin extends JavaPlugin {
         getCommand("debug").setExecutor(new DebugCommand(this));
         getCommand("broadcast").setExecutor(new BroadcastCommnad());
 
+        getCommand("debug").setTabCompleter(new DebugCommandTabCompleter(this));
+
         ManoirGestionRunnable manoirGestionRunnable = new ManoirGestionRunnable(this);
         manoirGestionRunnable.runTaskTimer(this, 0, 0);
 
         TrackerGestionRunnable trackerGestionRunnable = new TrackerGestionRunnable(this);
         trackerGestionRunnable.runTaskTimer(this, 0, 2);
+
+        EffectGestionRunnable effectGestionRunnable = new EffectGestionRunnable(this);
+        effectGestionRunnable.runTaskTimer(this, 0, 2);
     }
 
     @Override

@@ -124,9 +124,10 @@ public class DebugCommand implements CommandExecutor {
                     sender.sendMessage("Joueur déconnecté");
                     return true;
                 }
-                if(args[2].equalsIgnoreCase("enable")) {
+                if(args[2].equalsIgnoreCase("setMayor")) {
                     plugin.nightPlayerManager().setMayor(target);
-                } else {
+                }
+                if(args[2].equalsIgnoreCase("removeMayor")) {
                     plugin.nightPlayerManager().removeMayor(target);
                 }
             }
@@ -135,7 +136,7 @@ public class DebugCommand implements CommandExecutor {
                     case "enable" -> {
                         plugin.nightGame().setTargetPlayerEnabled(true);
                     } 
-                    default -> {
+                    case "disable" -> {
                         plugin.nightGame().setTargetPlayerEnabled(false);
                     }
                 }
@@ -150,6 +151,26 @@ public class DebugCommand implements CommandExecutor {
                     }
                     Player player = (Player) sender;
                     player.getInventory().addItem(plugin.trackerUtility().getTracker(target));
+                }
+            }
+            case "target" -> {
+                sender.sendMessage("Commande de target");
+                if(args[1].equals("target")) {
+                    Player target = Bukkit.getPlayer(args[2]);
+                    if(target == null) {
+                        sender.sendMessage("Joueur déconnecté");
+                        return true;
+                    }
+                    Player player = (Player) sender;
+                    plugin.nightPlayerManager().player(target).setTarget(true);
+                }
+                if(args[1].equals("untarget")) {
+                    Player target = Bukkit.getPlayer(args[2]);
+                    if(target == null) {
+                        sender.sendMessage("Joueur déconnecté");
+                        return true;
+                    }
+                    plugin.nightPlayerManager().player(target).setTarget(false);
                 }
             }
             default -> {
